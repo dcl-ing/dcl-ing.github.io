@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>华石轩 - 灵璧石直播甄选 | 原产地奇石</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        body {
+            background-color: #f8f7f2;
+            color: #333;
+        }
+        /* 头部导航 */
+        header {
+            background-color: #2c2c2c;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 28px;
+            letter-spacing: 4px;
+        }
+        header p {
+            margin-top: 8px;
+            opacity: 0.8;
+        }
+        nav {
+            background: #444;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 22px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            background-color: #775522;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        /* 首页横幅 */
+        .banner {
+            background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("https://picsum.photos/id/1036/1600/600");
+            background-size: cover;
+            background-position: center;
+            height: 420px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        .banner h2 {
+            font-size: 42px;
+            margin-bottom:15px;
+        }
+        .banner p {
+            font-size:18px;
+            max-width:750px;
+            line-height:1.7;
+        }
+        .live-btn {
+            display: inline-block;
+            margin-top:28px;
+            background: #b8860b;
+            color:#fff;
+            padding:14px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight:bold;
+            font-size:18px;
+        }
+        .live-btn:hover {
+            background: #daa520;
+        }
+        .section-title {
+            text-align:center;
+            font-size:30px;
+            color:#2c2c2c;
+            margin-bottom:40px;
+            padding-bottom:12px;
+            border-bottom:2px solid #b8860b;
+            display:inline-block;
+            position:relative;
+            left:50%;
+            transform:translateX(-50%);
+        }
+        /* 关于我们 */
+        .about {
+            margin:70px 0;
+        }
+        .about-content {
+            display:flex;
+            gap:35px;
+            flex-wrap:wrap;
+            align-items:center;
+        }
+        .about-text {
+            flex:1;
+            min-width:300px;
+            line-height:1.8;
+            font-size:16px;
+        }
+        .about-img{
+            flex:1;
+            min-width:300px;
+        }
+        .about-img img{
+            width:100%;
+            border-radius:10px;
+            box-shadow:0 3px 15px #00000020;
+            cursor: pointer;
+        }
+        /* 产品列表 */
+        .goods {
+            margin:70px 0;
+        }
+        .goods-list {
+            display:grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap:28px;
+        }
+        .goods-item {
+            background:#fff;
+            border-radius:10px;
+            overflow:hidden;
+            box-shadow:0 2px 12px #00000015;
+            transition: 0.3s;
+        }
+        .goods-item:hover{
+            transform: translateY(-6px);
+            box-shadow:0 6px 18px #00000022;
+        }
+        .goods-item img {
+            width:100%;
+            height:240px;
+            object-fit:cover;
+            cursor: pointer;
+        }
+        .goods-item .info {
+            padding:20px;
+        }
+        .goods-item h3 {
+            margin-bottom:10px;
+            color:#2c2c2c;
+        }
+        .goods-item p {
+            line-height:1.7;
+            color:#555;
+        }
+        /* 场景介绍板块 */
+        .scene-wrap{
+            margin:70px 0;
+        }
+        .scene-item{
+            display:flex;
+            flex-wrap:wrap;
+            gap:30px;
+            align-items:center;
+            margin-bottom:45px;
+        }
+        .scene-item:nth-child(even){
+            flex-direction: row-reverse;
+        }
+        .scene-img{
+            flex:1;
+            min-width:300px;
+        }
+        .scene-img img{
+            width:100%;
+            border-radius:10px;
+            cursor: pointer;
+        }
+        .scene-text{
+            flex:1;
+            min-width:300px;
+        }
+        .scene-text h3{
+            font-size:24px;
+            margin-bottom:12px;
+            color:#2c2c2c;
+        }
+        .scene-text p{
+            line-height:1.8;
+            font-size:16px;
+            color:#444;
+        }
+        /* 询价表单 */
+        .form-wrap{
+            background:#fff;
+            padding:40px;
+            border-radius:12px;
+            box-shadow:0 2px 15px rgba(0,0,0,0.1);
+            max-width:700px;
+            margin:70px auto;
+        }
+        .form-wrap h3{
+            text-align:center;
+            font-size:26px;
+            margin-bottom:30px;
+            color:#2c2c2c;
+        }
+        .form-item{
+            margin-bottom:20px;
+        }
+        .form-item label{
+            display:block;
+            margin-bottom:8px;
+            font-weight:bold;
+            color:#333;
+        }
+        .form-item input,.form-item textarea{
+            width:100%;
+            padding:12px 16px;
+            border:1px solid #ccc;
+            border-radius:6px;
+            font-size:16px;
+        }
+        .form-item textarea{
+            min-height:120px;
+            resize:vertical;
+        }
+        .submit-btn{
+            width:100%;
+            padding:14px;
+            background:#b8860b;
+            color:white;
+            border:none;
+            border-radius:6px;
+            font-size:18px;
+            font-weight:bold;
+            cursor:pointer;
+        }
+        .submit-btn:hover{
+            background:#daa520;
+        }
+        .tip-text{
+            margin-top:15px;
+            text-align:center;
+            color:#666;
+            font-size:14px;
+        }
+        /* 联系板块 */
+        .contact {
+            background:#2c2c2c;
+            color:#fff;
+            padding:55px 20px;
+            text-align:center;
+        }
+        .contact p {
+            margin:12px 0;
+            font-size:17px;
+        }
+        footer {
+            background:#111;
+            color:#aaa;
+            text-align:center;
+            padding:22px;
+            font-size:14px;
+        }
+        /* ========== 图片放大弹窗样式 ========== */
+        .img-modal{
+            position: fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background-color: rgba(0,0,0,0.85);
+            display:none;
+            align-items:center;
+            justify-content:center;
+            z-index:9999;
+            padding:20px;
+        }
+        .img-modal.show{
+            display:flex;
+        }
+        .img-modal img{
+            max-width:90%;
+            max-height:90%;
+            border-radius:6px;
+        }
+        .img-modal .close{
+            position:absolute;
+            top:20px;
+            right:30px;
+            font-size:40px;
+            color:#fff;
+            cursor:pointer;
+        }
+        /* 表单提交提示弹窗 */
+        .msg-modal{
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background:rgba(0,0,0,0.7);
+            display:none;
+            z-index:10000;
+            align-items:center;
+            justify-content:center;
+        }
+        .msg-modal.show{
+            display:flex;
+        }
+        .msg-box{
+            background:#fff;
+            padding:30px;
+            border-radius:10px;
+            text-align:center;
+            max-width:400px;
+        }
+        .msg-box h4{
+            font-size:22px;
+            margin-bottom:15px;
+            color:#2c2c2c;
+        }
+        .msg-box p{
+            margin-bottom:20px;
+            color:#555;
+        }
+        .msg-box button{
+            padding:10px 24px;
+            background:#b8860b;
+            color:#fff;
+            border:none;
+            border-radius:6px;
+            font-size:16px;
+            cursor:pointer;
+        }
+        /* 回到顶部按钮 */
+        #backTop{
+            position:fixed;
+            bottom:30px;
+            right:30px;
+            width:48px;
+            height:48px;
+            background:#b8860b;
+            color:#fff;
+            border-radius:50%;
+            display:none;
+            z-index:999;
+            text-align:center;
+            line-height:48px;
+            font-size:22px;
+            cursor:pointer;
+            box-shadow:0 3px 10px rgba(0,0,0,0.2);
+        }
+        #backTop:hover{
+            background:#daa520;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>华石轩</h1>
+        <p>灵璧石原产地｜奇石直播甄选</p>
+    </header>
+    <nav>
+        <a href="#home">首页</a>
+        <a href="#about">关于华石轩</a>
+        <a href="#scene">应用场景</a>
+        <a href="#goods">灵璧石藏品</a>
+        <a href="#form">询价咨询</a>
+        <a href="#contact">直播&联系</a>
+    </nav>
+
+    <section class="banner" id="home">
+        <div>
+            <h2>华石轩灵璧石直播专场</h2>
+            <p>灵璧石，中国四大名石之首，叩之声如青铜，色泽沉稳古朴。<br>直播间原产地实拍选石，案头摆件、庭院假山、鱼池造景、大型景观石均可挑选，一物一拍，所见即所得。</p>
+            <a href="#form" class="live-btn">立即询价</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="about" id="about">
+            <h2 class="section-title">关于华石轩</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>华石轩扎根灵璧石原产地，多年专注天然灵璧奇石开采、甄选与直播销售。我们坚持原石无人工打磨造假，直播间现场展示石头全貌、纹理、声音，让石友远程放心选石。</p>
+                    <br>
+                    <p>灵璧石品类丰富：磬石、景观石、象形石、千层石，适用茶室、书房、庭院、别墅、园林工程。从小把玩小品石，到数吨重大型置石，直播间持续上新。支持视频看细节，可定制假山造景方案。欢迎各地石友交流品鉴！</p>
+                </div>
+                <div class="about-img">
+                    <img src="https://picsum.photos/id/1029/700/500" alt="华石轩灵璧石原石" onclick="openImg(this.src)">
+                </div>
+            </div>
+        </section>
+
+        <!-- 灵璧石应用场景板块 -->
+        <section class="scene-wrap" id="scene">
+            <h2 class="section-title">灵璧石应用场景</h2>
+            <div class="scene-item">
+                <div class="scene-img">
+                    <img src="https://picsum.photos/id/1060/700/500" alt="茶室案头灵璧石" onclick="openImg(this.src)">
+                </div>
+                <div class="scene-text">
+                    <h3>茶室书房 · 案头摆件</h3>
+                    <p>小型灵璧石小品，造型玲珑，适合茶台、书桌、博古架摆放。天然原石，增添中式禅意氛围，文人清供首选，尺寸小巧方便搬运收藏。直播间很多精品象形小石，适合个人玩家。</p>
+                </div>
+            </div>
+            <div class="scene-item">
+                <div class="scene-img">
+                    <img src="https://picsum.photos/id/1043/700/500" alt="庭院假山造景" onclick="openImg(this.src)">
+                </div>
+                <div class="scene-text">
+                    <h3>庭院花园 · 假山堆叠</h3>
+                    <p>中小型灵璧石，用于庭院假山、流水景观。石头褶皱丰富，层次自然，搭配绿植流水，营造山水意境。民宿、小院、露台造景常用，可单块孤赏，也可多块组合假山。</p>
+                </div>
+            </div>
+            <div class="scene-item">
+                <div class="scene-img">
+                    <img src="https://picsum.photos/id/1039/700/500" alt="鱼池驳岸灵璧石" onclick="openImg(this.src)">
+                </div>
+                <div class="scene-text">
+                    <h3>鱼池驳岸 · 水景置石</h3>
+                    <p>灵璧石耐水，常用于鱼池围边、水景点缀。石头入水后颜色更温润，搭配水景效果大气。别墅鱼池、景观水池工程常用，支持挑选批量石料。</p>
+                </div>
+            </div>
+            <div class="scene-item">
+                <div class="scene-img">
+                    <img src="https://picsum.photos/id/1031/700/500" alt="大型景观灵璧石" onclick="openImg(this.src)">
+                </div>
+                <div class="scene-text">
+                    <h3>大门广场 · 大型景观石</h3>
+                    <p>大块灵璧孤石，适合企业门口、园区、别墅大门做招牌景观石。气势浑厚，可刻字，作为镇石、景观主石。重量大，我们可协助对接吊装物流。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="goods" id="goods">
+            <h2 class="section-title">灵璧石藏品展示</h2>
+            <div class="goods-list">
+                <div class="goods-item">
+                    <img src="https://picsum.photos/id/1015/600/400" alt="案头小品灵璧石" onclick="openImg(this.src)">
+                    <div class="info">
+                        <h3>案头小品灵璧石</h3>
+                        <p>小巧象形原石，茶室博古架摆件，把玩收藏，尺寸10-40cm，直播间每日上新精品。</p>
+                    </div>
+                </div>
+                <div class="goods-item">
+                    <img src="https://picsum.photos/id/1019/600/400" alt="庭院假山灵璧石" onclick="openImg(this.src)">
+                    <div class="info">
+                        <h3>庭院假山灵璧石</h3>
+                        <p>褶皱丰富，适合小院假山流水造景，形态自然，可多块组合造景。</p>
+                    </div>
+                </div>
+                <div class="goods-item">
+                    <img src="https://picsum.photos/id/1024/600/400" alt="象形收藏灵璧石" onclick="openImg(this.src)">
+                    <div class="info">
+                        <h3>象形收藏灵璧石</h3>
+                        <p>天然成型，人物、鸟兽造型奇石，收藏级原石，石友收藏品鉴。</p>
+                    </div>
+                </div>
+                <div class="goods-item">
+                    <img src="https://picsum.photos/id/1031/600/400" alt="灵璧磬石" onclick="openImg(this.src)">
+                    <div class="info">
+                        <h3>灵璧磬石</h3>
+                        <p>经典磬石品种，叩击有声，音色清脆，传统名石，观赏与听音兼备。</p>
+                    </div>
+                </div>
+                <div class="goods-item">
+                    <img src="https://picsum.photos/id/1066/600/400" alt="鱼池驳岸石" onclick="openImg(this.src)">
+                    <div class="info">
+                        <h3>鱼池驳岸灵璧石</h3>
+                        <p>适合水池围边，耐水耐腐蚀，水景造景专用石料，大小规格齐全。</p>
+                    </div>
+                </div>
+                <div class="goods-item">
+                    <img src="https://picsum.photos/id/1048/600/400" alt="大型景观孤石" onclick="openImg(this.src)">
+                    <div class="info">
+                        <h3>大型景观孤石</h3>
+                        <p>门口招牌置石，气势磅礴，可刻字，园区、别墅大门主景观石。</p>
+                    </div>
+                </div>
+                <div class="goods-item">
+                    <img src="https://picsum.photos/id/1059/600/400" alt="千层灵璧石" onclick="openImg(this.src)">
+                    <div class="info">
+                        <h3>千层灵璧石</h3>
+                        <p>层理分明，层次感强，假山造景热门石材，堆叠效果非常出彩。</p>
+                    </div>
+                </div>
+                <div class="goods-item">
+                    <img src="https://picsum.photos/id/1063/600/400" alt="玄关落地灵璧石" onclick="openImg(this.src)">
+                    <div class="info">
+                        <h3>玄关落地灵璧石</h3>
+                        <p>中等尺寸原石，客厅、玄关摆放，大气中式装饰，镇宅观赏两用。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== 询价表单板块 ========== -->
+        <section class="form-wrap" id="form">
+            <h3>灵璧石咨询询价</h3>
+            <!-- 👉👉👉 修改下面引号内为你的邮箱地址 -->
+            <form action="https://formsubmit.co/2012325343@qq.com" method="POST" id="inquiryForm">
+                <!-- 成功跳转页面，可不用改 -->
+                <input type="hidden" name="_next" value="https://你的gitee页面地址">
+                <div class="form-item">
+                    <label>您的姓名</label>
+                    <input type="text" name="name" placeholder="请输入姓名" required>
+                </div>
+                <div class="form-item">
+                    <label>联系电话</label>
+                    <input type="tel" name="phone" placeholder="请输入手机号" required>
+                </div>
+                <div class="form-item">
+                    <label>需求描述</label>
+                    <textarea name="msg" placeholder="例如：想要庭院假山石、案头摆件，大概尺寸、预算，或者想了解直播间石头..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">提交询价</button>
+            </form>
+            <p class="tip-text">提交后我们会尽快联系您，也可以直接进入抖音直播间看现货灵璧石</p>
+        </section>
+    </div>
+
+    <section class="contact" id="contact">
+        <h2 class="section-title" style="color:white;">直播与联系方式</h2>
+        <p>📺 直播渠道：抖音直播间【华石轩灵璧石】</p>
+        <p>📞 咨询微信：填写你的微信</p>
+        <p>📍 产地：灵璧石原产地</p>
+        <p>⏰ 直播时间：每日开播，直播间现场看石选石</p>
+        <p>💡 服务说明：原石一物一拍，可视频看石头细节，假山工程可咨询方案，全国可发货，大件可协助安排吊装。</p>
+    </section>
+
+    <footer>
+        <p>© 2026 华石轩 灵璧石 | 奇石直播销售 版权所有</p>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <div id="backTop">↑</div>
+
+    <!-- ========== 图片放大弹窗DOM ========== -->
+    <div class="img-modal" id="imgModal" onclick="closeImg()">
+        <span class="close">&times;</span>
+        <img id="modalImg">
+    </div>
+
+    <!-- 表单提交提示弹窗 -->
+    <div class="msg-modal" id="msgModal">
+        <div class="msg-box">
+            <h4>提交成功</h4>
+            <p>感谢您的询价，华石轩会尽快与您联系！</p>
+            <button onclick="closeMsg()">确定</button>
+        </div>
+    </div>
+
+    <!-- ========== JS逻辑 ========== -->
+    <script>
+        const modal = document.getElementById('imgModal');
+        const modalImg = document.getElementById('modalImg');
+        const msgModal = document.getElementById('msgModal');
+        const backTopBtn = document.getElementById('backTop');
+
+        function openImg(src){
+            modalImg.src = src;
+            modal.classList.add('show');
+        }
+        function closeImg(){
+            modal.classList.remove('show');
+        }
+        function closeMsg(){
+            msgModal.classList.remove('show');
+        }
+        // ESC关闭弹窗
+        document.addEventListener('keydown',function(e){
+            if(e.key === 'Escape') {
+                closeImg();
+                closeMsg();
+            }
+        })
+
+        // 返回顶部
+        window.addEventListener('scroll', function(){
+            if(window.scrollY > 300){
+                backTopBtn.style.display = 'block';
+            }else{
+                backTopBtn.style.display = 'none';
+            }
+        })
+        backTopBtn.addEventListener('click', function(){
+            window.scrollTo({top:0, behavior:'smooth'});
+        })
+    </script>
+</body>
+</html>
